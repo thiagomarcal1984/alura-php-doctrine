@@ -17,7 +17,7 @@ class EntityManagerCreator
         // $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"), $isDevMode);
         // $config = ORMSetup::createYAMLMetadataConfiguration(array(__DIR__."/config/yaml"), $isDevMode);
         $config = ORMSetup::createAttributeMetadataConfiguration( // Este método usa a sintasxe de atributos nas entidades.
-            [__DIR__."/src"], // Array de paths que podem conter as entidades. No caso, só a pasta src contém as entidades.
+            [__DIR__."/.."], // Array de paths que podem conter as entidades. No caso, só a pasta src contém as entidades.
             $isDevMode, // Booleano pra informar se o ambiente é de desenvolvimento ou de produção.
             // $proxyDir, // Caminho onde o Doctrine pode criar classes em tempo de execução. Se nulo, o Doctrine cria automaticamente.
             // $cache // Onde está a interface que vai tratar o armazenamento de cache. Se nulo, o Doctrine cria automaticamente.

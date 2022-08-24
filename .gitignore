@@ -359,7 +359,7 @@ fabric.properties
 
 ##### Eclipse
 .metadata
-bin/
+# bin/ # A pasta bin vai conter uma classe PHP usada no curso.
 tmp/
 *.tmp
 *.bak

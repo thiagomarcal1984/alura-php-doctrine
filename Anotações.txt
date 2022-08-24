@@ -1,0 +1,30 @@
+Usando a linha de comando do Doctrine (php .\vendor\bin\doctrine) é sugerida
+uma sintaxe para a criação de um arquivo de configuração chamado 
+config/cli-config.php, para que o framework funcione no projeto.
+
+O doctrine não recomenda o uso de seu cli em vendor. Ao invés disso, recomenda
+consultar a documentação do Doctrine Console: 
+https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/tools.html#doctrine-console
+
+Na documentação recomenda a criação de um arquivo à parte para a configuração 
+Doctrine Console (ver o arquivo \bin\doctrine.php).
+
+No curso, teremos duas formas de usar o doctrine: ou o CLI na pasta vendor\bin
+ou o CLI personalizado do Doctrine Console.
+
+Um exemplo para uso do CLI é:
+    doctrine orm:info
+
+Esse comando vai verificar se há falha no código do ORM. Nesse caso, o criador 
+do EntityManager está com o caminho errado (src\Helper/src). Para corrigir, é
+necessário "subir uma pasta" ao invés de indicar a subpasta src (ver o código 
+de src/Helper/EntityManagerCreator.php).
+
+Outro comando para descrever uma entidade: 
+    doctrine.php orm:mapping:describe <Nome da Entidade>
+
+Comando para criar o banco de dados, conforme as configurações:
+    doctrine.php orm:schema-tool:create
+
+Comando para executar um SQL qualquer:
+    doctrine.php dbal:run-sql "SELECT * FROM TABLE"
