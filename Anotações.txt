@@ -28,3 +28,13 @@ Comando para criar o banco de dados, conforme as configurações:
 
 Comando para executar um SQL qualquer:
     doctrine.php dbal:run-sql "SELECT * FROM TABLE"
+
+Comandos persist e flush:
+
+$entityManager->persist($student); 
+// O método persist apenas guarda o objeto no EntityManager, não no database.
+// O EntityManager passa a gerenciar o objeto $student.
+
+$entityManager->flush(); 
+// Comita no database todas as alterações gerenciadas pelo EntityManager,
+// em uma única transação.
