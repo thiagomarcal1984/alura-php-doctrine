@@ -3,6 +3,7 @@
 namespace Alura\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -16,7 +17,7 @@ class Student
     public int $id; // O Doctrine prcisa que a id esteja acessível.
 
     #[OneToMany(targetEntity: Phone::class, mappedBy: "student")]
-    private iterable $phones; // Este objeto não é um array nativo do PHP.
+    private Collection $phones; // Este objeto não é um array nativo do PHP.
     
     // Sintaxe de construtor nova no PHP 8. Se chama Promoção de Propriedades.
     public function __construct(
@@ -37,6 +38,9 @@ class Student
         $phone->setStudent($this);
     }
 
+    /**
+     * @return iterable<Phone>
+     */
     public function phones(): iterable
     {
         return $this->phones;

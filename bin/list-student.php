@@ -13,12 +13,20 @@ $studentRepository = $entityManager->getRepository(Student::class);
 $studentList = $studentRepository->findAll();
 
 foreach ($studentList as $student) {
-    echo "ID: $student->id\nNome: $student->name\n\n";
+    echo "ID: $student->id\nNome: $student->name\n";
+    echo "Telefones:\n";
+
+    foreach ($student->phones() as $phone) {
+        echo "\t" .$phone->number . PHP_EOL;
+    }
+
+    echo PHP_EOL . PHP_EOL;
 }
 
 // Para buscar um único objeto pelo ID, use find.
 // De novo: o comentário abaixo serve para facilitar o autocomplete da IDE.
 /** @var Student $alunoTeste */
+/*
 $alunoTeste = $studentRepository->find(2);
 echo $alunoTeste->name;
 
@@ -34,3 +42,4 @@ var_dump($result);
 
 // Para contar elementos, use o método count (e forneça algum array, mesmo que vazio).
 echo PHP_EOL . "Número de Students: " . $studentRepository->count([]) . PHP_EOL;
+*/
