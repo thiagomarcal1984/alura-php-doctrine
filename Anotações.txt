@@ -38,3 +38,31 @@ $entityManager->persist($student);
 $entityManager->flush(); 
 // Comita no database todas as alterações gerenciadas pelo EntityManager,
 // em uma única transação.
+
+Alguns métodos dos repositórios do Doctrine:
+    findAll: retorna um array com todas entidades do repositório.
+        $studentRepository->findAll();
+
+    find: retorna uma única entidade do repositório, recuperada pelo seu ID.
+        $studentRepository->find(2);
+
+    findBy: filtra o repositório usando um array com chave/valor. Retorna um 
+    array das entidades filtradas. O método findBy também pode receber um
+    segundo array como parâmetro que define os critérios de ordenação. O 
+    terceiro parâmetro limita o número de resultados e o quarto parâmetro 
+    informa a partir de qual linha o resultado é exibido (recurso usado em 
+    paginação):
+        $studentRepository->findBy(['name' => "Maria José"]);
+        $alunoRepository->findBy(
+            [], // $criteria, Critérios de filtro.
+            ['nome' => 'ASC'], // $orderBy, Critérios de ordenação.
+            2, // $limit, Número máximo de resultados.
+            3 // $offset, Linha a partir da qual os resultados serão exibidos.
+        );
+
+    findOneBy: retorna uma única entidade, recuperada conforme critérios de um 
+    array usado para filtro.
+        studentRepository->findOneBy(['name'=> "João da Silva"]);
+
+    count: conta o número de entidades no repositório.
+        $studentRepository->count([]);
