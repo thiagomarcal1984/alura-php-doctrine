@@ -136,3 +136,6 @@ um objeto gerenciado pelo EntityManager, mas sim um objeto incompleto.
 Ao criar um relacionamento muitos para muitos, uma entidade precisa usar o
 parâmetro inversedBy e a outra precisa usar o parâmetro mappedBy. As entidades
 do ManyToMany não podem ter esses parâmetros iguais ao mesmo tempo.
+
+Cuidado com a recursão infinita ao atribuir entidades que tenham relacionamento
+ManyToMany. Faça um if na lista dos objetos para isso.
