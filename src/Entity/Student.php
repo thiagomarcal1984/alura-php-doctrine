@@ -19,6 +19,8 @@ class Student
     public function __construct(
         #[Column()]
         public readonly string $name
+        // public string $name // o arquivo bin\rename-student.php precisa que 
+        // esta propriedade permita escrita.
     )
     {
         

@@ -66,3 +66,11 @@ Alguns métodos dos repositórios do Doctrine:
 
     count: conta o número de entidades no repositório.
         $studentRepository->count([]);
+
+Há duas formas de recuperar uma entidade pelo ID:
+    1. Usando o EntityManager:
+        $student = $entityManager->find(Student::class, $argv[1]);
+
+    2. Usando o repositório: 
+        $studentRepository = $entityManager->getRepository(Student::class);
+        $student = $studentRepository->find($argv[1]);
