@@ -16,7 +16,11 @@ class Student
     #[Id, GeneratedValue, Column]
     public int $id; // O Doctrine prcisa que a id esteja acessível.
 
-    #[OneToMany(targetEntity: Phone::class, mappedBy: "student")]
+    #[OneToMany(
+        mappedBy: "student", 
+        targetEntity: Phone::class, 
+        cascade: ["persist", "remove"]
+    )]
     private Collection $phones; // Este objeto não é um array nativo do PHP.
     
     // Sintaxe de construtor nova no PHP 8. Se chama Promoção de Propriedades.

@@ -119,3 +119,16 @@ Doctrine, não existe por padrão no PHP).
 
 As Collection do Doctrine tem um método para acrescentar elementos:
     $collection->add($objeto);
+
+O parâmetro cascade no atributo OneToMany é um array que contém operações a
+serem feitas para os objetos filho:
+    #[OneToMany(
+        targetEntity: Phone::class, 
+        mappedBy: "student", 
+        cascade: ["persist", "remove"]
+    )]
+
+Para que as operações em cascata funcionem (persist e remove), não podemos
+recuperar a entidade usando o método getPartialReference do EntityManager, 
+mas sim usando o método find. Isso porque o getPartialReference não retorna
+um objeto gerenciado pelo EntityManager, mas sim um objeto incompleto.
