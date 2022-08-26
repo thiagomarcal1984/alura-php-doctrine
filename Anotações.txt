@@ -90,3 +90,19 @@ O método getPartialReference também pode ser usado ao atualizar a entidade.
 Por baixo dos panos, o método "remove"  do EntityManager tira o ID da entidade:
    unset($student->id);
 Por isso, a classe da entidade precisa permitir escrita no ID.
+
+De acordo com a documentação do Doctrine, as duas sintaxes abaixo se equivalem:
+
+    #[Id, GeneratedValue, Column]
+    public int $id;
+
+    ou
+
+    #[Id]
+    #[GeneratedValue]
+    #[Column]
+    public int $id;
+
+Veja a referência de atributos (#[attr]) e de anotações (//* @Annotation */):
+    https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/attributes-reference.html#attributes-reference
+    https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/annotations-reference.html#annotations-reference
