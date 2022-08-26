@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\OneToMany;
 
 #[Entity]
@@ -22,6 +23,9 @@ class Student
         cascade: ["persist", "remove"]
     )]
     private Collection $phones; // Este objeto não é um array nativo do PHP.
+
+    #[ManyToMany(targetEntity:Course::class, inversedBy: "students")]
+    private Collection $courses;
     
     // Sintaxe de construtor nova no PHP 8. Se chama Promoção de Propriedades.
     public function __construct(
@@ -32,6 +36,7 @@ class Student
     )
     {
         $this->phones = new ArrayCollection();
+        $this->courses = new ArrayCollection();
     }
 
     public function addPhone(Phone $phone): void
@@ -45,8 +50,13 @@ class Student
     /**
      * @return Collection<Phone>
      */
-    public function phones(): iterable
+    public function phones(): Collection
     {
         return $this->phones;
+    }
+
+    public function courses(): Collection
+    {
+        return $this->courses;
     }
 }
