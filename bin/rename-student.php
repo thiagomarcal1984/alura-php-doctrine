@@ -15,5 +15,6 @@ $student = $entityManager->find(Student::class, $argv[1]);
 // Se name não for readonly, a atribuição abaixo vai funcionar.
 $student->name = $argv[2];
 
-$entityManager->persist($student);
+// O método persist não é necessário para atualizar, porque a entidade já está
+// sendo gerenciada pelo $entityManager.
 $entityManager->flush();

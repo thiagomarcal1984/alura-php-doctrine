@@ -74,3 +74,9 @@ Há duas formas de recuperar uma entidade pelo ID:
     2. Usando o repositório: 
         $studentRepository = $entityManager->getRepository(Student::class);
         $student = $studentRepository->find($argv[1]);
+
+Por que precisamos chamar o persist para inserir, mas não para atualizar uma 
+entidade? Porque a entidade que atualizamos já estava sendo gerenciada pelo 
+Doctrine. Ao recuperar uma entidade a partir do repositório, o EntityManager 
+já gerencia o objeto recuperado (como se o método persist tivesse sido 
+implicitamente chamado).
