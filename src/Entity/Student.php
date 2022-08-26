@@ -13,7 +13,7 @@ class Student
     #[Id]
     #[GeneratedValue]
     #[Column]
-    public readonly int $id;
+    public int $id; // O Doctrine prcisa que a id esteja acessível.
     
     // Sintaxe de construtor nova no PHP 8. Se chama Promoção de Propriedades.
     public function __construct(

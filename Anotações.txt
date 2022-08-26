@@ -80,3 +80,13 @@ entidade? Porque a entidade que atualizamos já estava sendo gerenciada pelo
 Doctrine. Ao recuperar uma entidade a partir do repositório, o EntityManager 
 já gerencia o objeto recuperado (como se o método persist tivesse sido 
 implicitamente chamado).
+
+O método getPartialReference do EntityManager permite a criação de um objeto
+da classe da entidade, mas ele apenas inicializa o ID do objeto. Isso evita que
+o banco de dados receba uma requisição a mais, melhorando a performance.
+
+O método getPartialReference também pode ser usado ao atualizar a entidade.
+
+Por baixo dos panos, o método "remove"  do EntityManager tira o ID da entidade:
+   unset($student->id);
+Por isso, a classe da entidade precisa permitir escrita no ID.
