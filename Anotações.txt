@@ -106,3 +106,16 @@ De acordo com a documentação do Doctrine, as duas sintaxes abaixo se equivalem
 Veja a referência de atributos (#[attr]) e de anotações (//* @Annotation */):
     https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/attributes-reference.html#attributes-reference
     https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/annotations-reference.html#annotations-reference
+
+Ao fazer um relacionamento um para muitos no Doctrine, é importante que as
+anotações sejam feitas nas duas classes, pois o relacionamento é bidirecional.
+
+O parâmetro inversedBy no atributo ManyToOne facilita o trabalho do Doctrine 
+para fazer cache, lazy loading etc.
+
+Na classe pai, é necessário que a referência à classe filha seja um iterável,
+cuja implementação deve usar a classe ArrayCollection (classe específica do 
+Doctrine, não existe por padrão no PHP). 
+
+As Collection do Doctrine tem um método para acrescentar elementos:
+    $collection->add($objeto);
